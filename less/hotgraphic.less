@@ -1,3 +1,136 @@
+.m-hotgraphic {
+  // --------------------------------------------------
+  // Hotgraphic as pins
+  // --------------------------------------------------
+  &__graphic {
+    position: relative;
+  }
+
+  &__graphic-pin {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .icon {
+      .icon-pin;
+    }
+  }
+  // --------------------------------------------------
+
+  // --------------------------------------------------
+  // Hotgraphic as tiles
+  // --------------------------------------------------
+  &__narrative {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__graphic-pin-image-container {
+    width: 50%;
+  }
+  // --------------------------------------------------
+
+  &__popup {
+    position: relative;
+  }
+
+  &__popup-inner {
+    padding-top: @icon-size + (@icon-padding * 2);
+  }
+
+  &__popup-toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &__popup-controls {
+    .u-float-left;
+
+    &.disabled {
+      visibility: hidden;
+    }
+  }
+
+  &__popup-controls.back {
+    .icon {
+      .icon-controls-small-left;
+    }
+  }
+
+  &__popup-controls.next {
+    .icon {
+      .icon-controls-small-right;
+    }
+  }
+
+  &__popup-count {
+    .u-float-left;
+    padding: 1.25em 1em;
+    line-height: 1em;
+  }
+
+  &__popup-count-item {
+    display: inline-block;
+  }
+
+  &__popup-done {
+    .u-float-right;
+
+    .icon {
+      .icon-cross;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__item-content,
+  &__item-image-container {
+    width: 100%;
+
+    @media (min-width: @device-width-medium) {
+      width: 50%;
+    }
+  }
+
+  // --------------------------------------------------
+  // Align hotgraphic pop up image to the left
+  // --------------------------------------------------
+  &__item.align-image-left {
+    @media (min-width: @device-width-medium) {
+      flex-direction: row-reverse;
+    }
+  }
+  // --------------------------------------------------
+
+  // --------------------------------------------------
+  // Hide hotgraphic pop up image in desktop
+  // --------------------------------------------------
+  &__item.hide-desktop-image {
+    .m-hotgraphic__item-content {
+      width: 100%;
+    }
+
+    .m-hotgraphic__item-image-container {
+      display: none;
+    }
+  }
+  // --------------------------------------------------
+
+  // --------------------------------------------------
+  // Hide the items that are not currently active and being viewed
+  // --------------------------------------------------
+  &__item:not(.is-active) {
+    display: none;
+  }
+  // --------------------------------------------------
+}
+
+
 // .hotgraphic-component {
 
 

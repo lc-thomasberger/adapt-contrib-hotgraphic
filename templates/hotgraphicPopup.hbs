@@ -1,30 +1,44 @@
-<div class="hotgraphic-popup-inner clearfix">
+<div class="m-hotgraphic__popup-inner u-clearfix">
 
   {{#each _items}}
-  <div class="hotgraphic-item component-item clearfix {{#if _isVisited}}visited{{/if}} {{#if _isActive}}active{{/if}} {{_classes}}" data-index={{@index}}>
+  <div class="m-hotgraphic__item component-item u-clearfix{{#if _classes}} {{_classes}}{{/if}}{{#if _isVisited}} is-visited{{/if}}{{#if _isActive}} is-active{{/if}}" data-index={{@index}}>
 
-    <div class="hotgraphic-item-content">
-      <div class="hotgraphic-item-content-inner">
+    <div class="m-hotgraphic__item-content">
+      <div class="m-hotgraphic__item-content-inner">
 
-        <div class="hotgraphic-content-title" role="heading" aria-level="5" tabindex="0">
-          {{{title}}}
+        {{#if title}}
+        <div class="m-hotgraphic__content-title" {{{a11y_attrs_heading "componentItem"}}}>
+          <div class="m-hotgraphic__content-title-inner">
+            {{{title}}}
+          </div>
         </div>
+        {{/if}}
 
-        <div class="hotgraphic-content-body">
-          {{{a11y_text body}}}
+        {{#if body}}
+        <div class="m-hotgraphic__content-body">
+          <div class="m-hotgraphic__content-body-inner">
+            {{{a11y_text body}}}
+          </div>
         </div>
+        {{/if}}
 
       </div>
     </div>
 
-    <div class="hotgraphic-item-graphic">
+    <div class="m-hotgraphic__item-image-container">
 
-      <div class="hotgraphic-item-graphic-inner">
-        <img src="{{_graphic.src}}" aria-label="{{_graphic.alt}}" tabindex="0"/>
-      </div>
+      {{#if _graphic.alt}}
+      <img class="m-hotgraphic__item-image" src="{{_graphic.src}}" aria-label="{{_graphic.alt}}" tabindex="0"/>
+      {{else}}
+      <img class="m-hotgraphic__item-image a11y-ignore" src="{{_graphic.src}}" aria-hidden="true" tabindex="-1"/>
+      {{/if}}
 
       {{#if _graphic.attribution}}
-      <div class="graphic-attribution">{{{a11y_text _graphic.attribution}}}</div>
+      <div class="m-hotgraphic__attribution">
+        <div class="m-hotgraphic__attribution-inner">
+          {{{a11y_text _graphic.attribution}}}
+        </div>
+      </div>
       {{/if}}
 
     </div>
@@ -34,26 +48,26 @@
 
 </div>
 
-<div class="hotgraphic-popup-toolbar component-item-color clearfix">
+<div class="m-hotgraphic__popup-toolbar component-item-color u-clearfix">
 
   {{#unless _hidePagination}}
-  <div class="hotgraphic-popup-nav component-item-color">
+  <div class="m-hotgraphic__popup-nav component-item-color">
 
-    <button class="base hotgraphic-popup-controls back" aria-label="{{_globals._accessibility._ariaLabels.previous}}" role="button">
-      <div class="hotgraphic-popup-arrow-l component-item-text-color icon icon-controls-small-left"></div>
+    <button class="btn-icon m-hotgraphic__popup-controls back js-hotgraphic-popup-control" aria-label="{{_globals._accessibility._ariaLabels.previous}}">
+      <div class="icon"></div>
     </button>
 
-    <div class="hotgraphic-popup-count component-item-text-color" tabindex="0"></div>
+    <div class="m-hotgraphic__popup-count component-item-text-color" tabindex="0"></div>
 
-    <button class="base hotgraphic-popup-controls next" aria-label="{{_globals._accessibility._ariaLabels.next}}" role="button">
-      <div class="hotgraphic-popup-arrow-r component-item-text-color icon icon-controls-small-right"></div>
+    <button class="btn-icon m-hotgraphic__popup-controls next js-hotgraphic-popup-control" aria-label="{{_globals._accessibility._ariaLabels.next}}">
+      <div class="icon"></div>
     </button>
 
   </div>
   {{/unless}}
 
-  <button class="base hotgraphic-popup-done" aria-label="{{_globals._accessibility._ariaLabels.closePopup}}" role="button">
-    <div class="hotgraphic-popup-close component-item-text-color icon icon-cross"></div>
+  <button class="btn-icon m-hotgraphic__popup-done js-hotgraphic-popup-done" aria-label="{{_globals._accessibility._ariaLabels.closePopup}}">
+    <div class="icon"></div>
   </button>
 
 </div>

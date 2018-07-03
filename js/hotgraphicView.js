@@ -8,7 +8,7 @@ define([
   var HotGraphicView = ComponentView.extend({
 
     events: {
-      'click .hotgraphic-graphic-pin': 'onPinClicked'
+      'click .js-hotgraphic-graphic-pin': 'onPinClicked'
     },
 
     initialize: function() {
@@ -51,7 +51,7 @@ define([
 
       var model = this.prepareNarrativeModel();
       var newNarrative = new NarrativeView({ model: model });
-      var $container = $(".component-container", $("." + this.model.get("_parentId")));
+      var $container = $(".component__container", $("." + this.model.get("_parentId")));
 
       newNarrative.reRender();
       newNarrative.setupNarrative();
@@ -87,12 +87,12 @@ define([
     },
 
     onItemsActiveChange: function(model, _isActive) {
-      this.getItemElement(model).toggleClass('active', _isActive);
+      this.getItemElement(model).toggleClass('is-active', _isActive);
     },
 
     getItemElement: function(model) {
       var index = model.get('_index');
-      return this.$('.hotgraphic-graphic-pin').filter('[data-index="' + index + '"]');
+      return this.$('.m-hotgraphic__graphic-pin').filter('[data-index="' + index + '"]');
     },
 
     onItemsVisitedChange: function(model, _isVisited) {
@@ -105,7 +105,7 @@ define([
         return val + " " + visitedLabel;
       });
 
-      $pin.addClass('visited');
+      $pin.addClass('is-visited');
     },
 
     // Used to check if the hotgraphic should reset on revisit
@@ -128,14 +128,14 @@ define([
 
     postRender: function() {
       this.renderState();
-      this.$('.hotgraphic-widget').imageready(this.setReadyStatus.bind(this));
+      this.$('.m-hotgraphic__widget').imageready(this.setReadyStatus.bind(this));
 
       this.setUpInviewListener();
     },
 
     setUpInviewListener: function() {
       if (this.model.get('_setCompletionOn') === 'inview') {
-        this.$('.component-widget').on('inview', this.inview);
+        this.$('.component__widget').on('inview', this.inview);
       }
     },
 
@@ -202,7 +202,7 @@ define([
 
     removeInviewListener: function() {
       if (this.model.get('_setCompletionOn') === 'inview') {
-        this.$('.component-widget').off('inview');
+        this.$('.component__widget').off('inview');
       }
     }
 
