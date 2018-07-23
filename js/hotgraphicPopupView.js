@@ -8,7 +8,6 @@ define([
     className: 'm-hotgraphic__popup',
 
     events: {
-      'click .js-hotgraphic-popup-done': 'closePopup',
       'click .js-hotgraphic-popup-control': 'onControlClick'
     },
 
@@ -90,10 +89,6 @@ define([
       data.view = this;
       var template = Handlebars.templates['hotgraphicPopup'];
       this.$el.html(template(data));
-    },
-
-    closePopup: function(event) {
-      Adapt.trigger('notify:close');
     },
 
     onControlClick: function(event) {
