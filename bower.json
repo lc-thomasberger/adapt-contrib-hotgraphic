@@ -1,6 +1,6 @@
 {
   "name": "adapt-contrib-hotgraphic",
-  "version": "2.1.2",
+  "version": "2.2.2",
   "framework": ">=2",
   "server": ">=0.7",
   "homepage": "https://github.com/lc-thomasberger/adapt-contrib-hotgraphic",
